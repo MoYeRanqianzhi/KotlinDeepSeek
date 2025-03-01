@@ -2,8 +2,6 @@ name: Publish
 on:
   release:
     types: [released, prereleased]
-
-  run: chmod +x ./gradlew
 jobs:
   publish:
     name: Release build and publish
