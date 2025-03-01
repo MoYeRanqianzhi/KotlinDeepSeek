@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "io.github.moyeranqianzhi"
-version = "0.1.0-alpha01"
+version = "0.1.0-alpha.1"
 
 kotlin {
     jvm()
