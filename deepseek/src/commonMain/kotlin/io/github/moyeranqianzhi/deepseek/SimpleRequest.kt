@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 
 class SimpleRequest(
-    private val apiKey: String,
+    apiKey: String,
     private val model: Model = Model.Chat,
     private val messages: Messages
 ) {
