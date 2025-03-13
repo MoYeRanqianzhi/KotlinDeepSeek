@@ -1,3 +1,4 @@
+import io.github.moyeranqianzhi.deepseek.SimpleRequest
 import io.github.moyeranqianzhi.deepseek.api.ApiKey
 import io.github.moyeranqianzhi.deepseek.api.Client
 import io.github.moyeranqianzhi.deepseek.api.ClientMessage
@@ -129,6 +130,37 @@ class Test {
                     }
                 }
             }
+        }
+    }
+
+    @Test
+    fun `test simple`() {
+        Messages(
+            Message.System("你是一个深索"),
+            Message.User("你好，你是谁")
+        )
+//        val messages = Messages()
+//        messages.append(Message.System("你是一个深索"))
+//        messages.append(Message.User("你好，你是谁"))
+//
+//        var messages = Messages()
+//        messages = messages.system("你是一个深索")
+//        messages = messages.user("你好，你是谁")
+
+        val messages = listOf(
+            Message.System("你是一个深索"),
+            Message.User("你好，你是谁")
+        ).toMessages()
+
+        runBlocking {
+            SimpleRequest(
+                apiKey = "sk-key",
+                model = Model.Chat,
+                messages = Messages {
+                    system("你是一个测试机A520")
+                    user("你好，你是谁")
+                }
+            ).chatCompletions().collect { print(it.second ?: "") }
         }
     }
 }
